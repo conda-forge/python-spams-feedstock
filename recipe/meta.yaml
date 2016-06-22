@@ -14,13 +14,12 @@ source:
 
   patches:
     # Fix how BLAS is detected. Mailed to developer.
-    - setup.py.patch
     # Update bindings for NumPy 1.10.x from 1.9.x.
-    - spams_wrap.cpp.patch
-    - spams_wrap-windows.cpp.patch
+    # Support Python 3.x.
+    - spams_py3k_np10.diff
 
 build:
-  skip: true  # [win or py3k]
+  skip: true  # [win]
   number: 201
   detect_binary_files_with_prefix: true
   features:
