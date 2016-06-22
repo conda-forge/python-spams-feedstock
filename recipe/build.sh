@@ -20,6 +20,6 @@ ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/liblapack.${DYLIB_
 rm "${PREFIX}/lib/libblas.${DYLIB_EXT}"
 rm "${PREFIX}/lib/liblapack.${DYLIB_EXT}"
 
-rm -r "${PREFIX}/doc"
-rm -r "${PREFIX}/extdata"
-rm -r "${PREFIX}/test"
+rm -rf "${PREFIX}/doc"
+rm -rf "${PREFIX}/extdata"
+rm -rf "${PREFIX}/test"
