@@ -11,6 +11,18 @@ Summary: An optimization toolbox for solving various sparse estimation problems.
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/python-spams-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/python-spams-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/python-spams-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/python-spams-feedstock)
+Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/python-spams/badges/version.svg)](https://anaconda.org/conda-forge/python-spams)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/python-spams/badges/downloads.svg)](https://anaconda.org/conda-forge/python-spams)
+
 Installing python-spams
 =======================
 
@@ -31,7 +43,6 @@ It is possible to list all of the versions of `python-spams` available on your p
 ```
 conda search python-spams --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -67,18 +78,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/python-spams-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/python-spams-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/python-spams-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/python-spams-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/python-spams/badges/version.svg)](https://anaconda.org/conda-forge/python-spams)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/python-spams/badges/downloads.svg)](https://anaconda.org/conda-forge/python-spams)
 
 
 Updating python-spams-feedstock
