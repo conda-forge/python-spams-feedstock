@@ -21,7 +21,7 @@ source:
 
 build:
   skip: true  # [win or py3k]
-  number: 203
+  number: 204
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
@@ -31,7 +31,7 @@ requirements:
     - gcc
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.18|0.2.18.*
+    - openblas 0.2.19|0.2.19.*
     - numpy x.x
     - scipy
     # For tests.
@@ -41,7 +41,7 @@ requirements:
     - libgcc
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.18|0.2.18.*
+    - openblas 0.2.19|0.2.19.*
     - numpy x.x
     - scipy
 
