@@ -1,5 +1,6 @@
 {% set version = "2.5" %}
 {% set date = "2014-03-27" %}
+{% set file_num = "33816" %}
 
 {% set variant = "openblas" %}
 
@@ -9,8 +10,8 @@ package:
 
 source:
   fn: spams-{{ version }}.tar.gz
-  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file=33816/spams-python-v{{ version }}-svn{{ date }}.tar.gz
-  sha1: f6f6d7fe385773690f886ee6d077a1cdf6f2ba41
+  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
+  sha256: d61f6b940370f801e62a5c11e95ef52cc5016b97bce48ef227f4bef8afc84b24
 
   patches:
     # Fix how BLAS is detected. Mailed to developer.
