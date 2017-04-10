@@ -1,0 +1,12 @@
+diff --git spams.py spams.py
+index 61583ef..0502de0 100644
+--- spams.py
++++ spams.py
+@@ -2467,6 +2467,7 @@ def displayPatches(D):
+     if int(sizeEdge) != sizeEdge:
+         V = 3
+         sizeEdge=np.sqrt(n/V)
++    sizeEdge = int(sizeEdge)
+         
+         
+ #    for ii in xrange(0,D.shape[1]):
