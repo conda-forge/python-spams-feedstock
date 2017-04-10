@@ -24,7 +24,7 @@ source:
 
 build:
   skip: true  # [win or py3k]
-  number: 204
+  number: 205
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
