@@ -11,8 +11,7 @@ ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/liblapack${SHLIB_EX
 
 
 "${PYTHON}" setup.py install
-export OPENBLAS_NUM_THREADS=1
-"${PYTHON}" test_spams.py
+OPENBLAS_NUM_THREADS=1 "${PYTHON}" test_spams.py
 
 
 rm "${PREFIX}/lib/libblas${SHLIB_EXT}"
