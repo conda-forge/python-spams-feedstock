@@ -19,6 +19,8 @@ source:
     # Update bindings for NumPy 1.10.x from 1.9.x.
     - spams_wrap.cpp.patch
     - spams_wrap-windows.cpp.patch
+    # Handle a type mismatch issue in array creation.
+    - test_prox.py.patch
 
 build:
   skip: true  # [win or py3k]
