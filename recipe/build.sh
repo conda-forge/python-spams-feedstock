@@ -11,8 +11,6 @@ ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/liblapack${SHLIB_EX
 
 
 "${PYTHON}" setup.py install
-# Over using memory (too many threads?). Will have to look at later.
-#"${PYTHON}" test_spams.py
 
 
 rm "${PREFIX}/lib/libblas${SHLIB_EXT}"

@@ -19,6 +19,9 @@ source:
     # Update bindings for NumPy 1.10.x from 1.9.x.
     - spams_wrap.cpp.patch
     - spams_wrap-windows.cpp.patch
+    # Handle type mismatch issues in array creation.
+    - spams.py.patch
+    - test_prox.py.patch
 
 build:
   skip: true  # [win or py3k]
@@ -47,6 +50,19 @@ requirements:
     - scipy
 
 test:
+  source_files:
+    # Test data
+    - boat.png
+    - lena.png           # [linux]
+    # Test suite
+    - test_decomp.py     # [linux]
+    - test_dictLearn.py
+    - test_linalg.py
+    - test_prox.py       # [linux]
+    - test_spams.py
+    - test_utils.py
+  requires:
+    - pillow
   imports:
     - spams
 
