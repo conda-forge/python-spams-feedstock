@@ -1,8 +1,8 @@
 if [ "$(uname)" == 'Darwin' ]
 then
-    export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
+    export LDFLAGS="${LDFLAGS} -Wl,-rpath,$PREFIX/lib"
 else
-    export LIBRARY_SEARCH_VAR=LD_LIBRARY_PATH
+    export LDFLAGS="${LDFLAGS} -Wl,-rpath=$PREFIX/lib"
 fi
 
 
@@ -12,7 +12,7 @@ ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/liblapack${SHLIB_EX
 
 "${PYTHON}" setup.py install
 # Over using memory (too many threads?). Will have to look at later.
-#eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib "${PYTHON}" test_spams.py
+#"${PYTHON}" test_spams.py
 
 
 rm "${PREFIX}/lib/libblas${SHLIB_EXT}"
