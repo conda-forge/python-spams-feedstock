@@ -13,8 +13,7 @@ ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/liblapack.${DYLIB_
 
 
 "${PYTHON}" setup.py install
-# Over using memory (too many threads?). Will have to look at later.
-#eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib "${PYTHON}" test_spams.py
+eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib "${PYTHON}" test_spams.py
 
 
 rm "${PREFIX}/lib/libblas.${DYLIB_EXT}"
