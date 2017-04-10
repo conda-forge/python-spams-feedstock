@@ -50,6 +50,8 @@ requirements:
     - scipy
 
 test:
+  source_files:
+    - test_*.py
   imports:
     - spams
 
