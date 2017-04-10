@@ -13,6 +13,7 @@ ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/liblapack.${DYLIB_
 
 
 "${PYTHON}" setup.py install
+export OPENBLAS_NUM_THREADS=1
 eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib "${PYTHON}" test_spams.py
 
 
