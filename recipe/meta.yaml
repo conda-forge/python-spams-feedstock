@@ -50,10 +50,14 @@ requirements:
     - scipy
 
 test:
-  source_files:
-    - test_*.py
+  source_files:                 # [linux]
+    - test_*.py                 # [linux]
+  files:                        # [linux]
+    - run_linux_test.py         # [linux]
   imports:
     - spams
+  commands:                     # [linux]
+    - python run_linux_test.py  # [linux]
 
 about:
   home: http://spams-devel.gforge.inria.fr/
