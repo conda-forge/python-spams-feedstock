@@ -1,15 +1,13 @@
 if [ "$(uname)" == 'Darwin' ]
 then
-    export DYLIB_EXT=dylib
     export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
 else
-    export DYLIB_EXT=so
     export LIBRARY_SEARCH_VAR=LD_LIBRARY_PATH
 fi
 
 
-ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/libblas.${DYLIB_EXT}"
-ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/liblapack.${DYLIB_EXT}"
+ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/libblas${SHLIB_EXT}"
+ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/liblapack${SHLIB_EXT}"
 
 
 "${PYTHON}" setup.py install
@@ -17,8 +15,8 @@ ln -s "${PREFIX}/lib/libopenblas.${DYLIB_EXT}" "${PREFIX}/lib/liblapack.${DYLIB_
 #eval ${LIBRARY_SEARCH_VAR}=$PREFIX/lib "${PYTHON}" test_spams.py
 
 
-rm "${PREFIX}/lib/libblas.${DYLIB_EXT}"
-rm "${PREFIX}/lib/liblapack.${DYLIB_EXT}"
+rm "${PREFIX}/lib/libblas${SHLIB_EXT}"
+rm "${PREFIX}/lib/liblapack${SHLIB_EXT}"
 
 rm -r "${PREFIX}/doc"
 rm -r "${PREFIX}/extdata"
