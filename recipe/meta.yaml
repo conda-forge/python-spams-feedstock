@@ -53,7 +53,7 @@ test:
   source_files:
     # Test data
     - boat.png
-    - lena.png
+    - lena.png           # [linux]
     # Test suite
     - test_decomp.py     # [linux]
     - test_dictLearn.py
