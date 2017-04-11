@@ -1,6 +1,7 @@
-{% set version = "2.5" %}
-{% set date = "2014-03-27" %}
-{% set file_num = "33816" %}
+{% set version = "2.6" %}
+{% set date = "2017-03-28" %}
+{% set file_num = "36643" %}      # [py2k]
+{% set file_num = "36644" %}      # [py3k]
 
 {% set variant = "openblas" %}
 
@@ -9,23 +10,30 @@ package:
   version: {{ version }}
 
 source:
-  fn: spams-{{ version }}.tar.gz
-  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
-  sha256: d61f6b940370f801e62a5c11e95ef52cc5016b97bce48ef227f4bef8afc84b24
+  fn: spams-python2-{{ version }}.tar.gz                                                                                         # [py2k]
+  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz   # [py2k]
+  sha256: b0372195c5c6e42251caad8751907873392ee0f87dc00767d45cd1d19a8e5e21                                                       # [py2k]
+
+  fn: spams-python3-{{ version }}.tar.gz                                                                                         # [py3k]
+  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python3-v{{ version }}-svn{{ date }}.tar.gz  # [py3k]
+  sha256: bd86be7bbe25dffffd5cc969ba5ec71e52f0a45102e31e40ebedf66616788734                                                       # [py3k]
 
   patches:
     # Fix how BLAS is detected. Mailed to developer.
-    - setup.py.patch
+    - python2_setup.py.patch      # [py2k]
+    - python3_setup.py.patch      # [py3k]
     # Update bindings for NumPy 1.10.x from 1.9.x.
     - spams_wrap.cpp.patch
     - spams_wrap-windows.cpp.patch
     # Handle type mismatch issues in array creation.
-    - spams.py.patch
-    - test_prox.py.patch
+    - python2_spams.py.patch      # [py2k]
+    - python3_spams.py.patch      # [py3k]
+    - python2_test_prox.py.patch  # [py2k]
+    - python3_test_prox.py.patch  # [py3k]
 
 build:
-  skip: true  # [win or py3k]
-  number: 205
+  skip: true  # [win]
+  number: 200
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
