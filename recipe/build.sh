@@ -6,15 +6,8 @@ else
 fi
 
 
-ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/libblas${SHLIB_EXT}"
-ln -s "${PREFIX}/lib/libopenblas${SHLIB_EXT}" "${PREFIX}/lib/liblapack${SHLIB_EXT}"
-
-
 "${PYTHON}" setup.py install
 
-
-rm "${PREFIX}/lib/libblas${SHLIB_EXT}"
-rm "${PREFIX}/lib/liblapack${SHLIB_EXT}"
 
 rm -r "${PREFIX}/doc"
 rm -r "${PREFIX}/extdata"
