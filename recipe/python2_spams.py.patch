@@ -1,7 +1,262 @@
 diff --git spams.py spams.py
-index 61583ef..0502de0 100644
+index 61583ef..544b8bc 100644
 --- spams.py
 +++ spams.py
+@@ -198,11 +198,11 @@ def conjGrad(A,b,x0 = None,tol = 1e-10,itermax = None):
+     """
+ 
+     n = A.shape[1]
+-    if x0 == None:
++    if x0 is None:
+         x = np.zeros((n),dtype = A.dtype)
+     else:
+         x = np.copy(x0)
+-    if itermax == None:
++    if itermax is None:
+         itermax = n
+     spams_wrap.conjugateGradient(A,b,x,tol,itermax)
+     return x
+@@ -417,17 +417,17 @@ def lasso(X,D= None,Q = None,q = None,return_reg_path = False,L= -1,lambda1= Non
+ #                 ('mode', spams_wrap.PENALTY),('pos', False),('ols', False),('numThreads', -1),
+ #                 ('max_length_path', -1),('verbose',True),('cholesky', False)]
+     
+-    if Q != None:
+-        if q == None:
++    if Q is not None:
++        if q is None:
+             raise ValueError("lasso : q is needed when Q is given")
+     else:
+-        if D == None:
++        if D is None:
+             raise ValueError("lasso : you must give D or Q and q")
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("lasso : lambda1 must be defined")
+     path = None
+-    if(q != None):
++    if(q is not None):
+         if return_reg_path:
+             ((indptr,indices,data,shape),path) = spams_wrap.lassoQq(X,Q,q,return_reg_path,L,lambda1,lambda2,mode,pos,ols,numThreads,max_length_path,verbose,cholesky)
+         else:
+@@ -503,7 +503,7 @@ def lassoMask(X,D,B,L= -1,lambda1= None,lambda2= 0.,
+     # Note : 'L' and 'max_length_path' default to -1 so that their effective default values
+     # will be set in spams.h
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("lassoMask : lambda1 must be defined")
+     (indptr,indices,data,shape) = spams_wrap.lassoMask(X,D,B,L,lambda1,lambda2,mode,pos,numThreads,verbose)
+     alpha = ssp.csc_matrix((data,indices,indptr),shape)
+@@ -571,7 +571,7 @@ def lassoWeighted(X,D,W,L= -1,lambda1= None,
+     # Note : 'L' and 'max_length_path' default to -1 so that their effective default values
+     # will be set in spams.h
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("lassoWeighted : lambda1 must be defined")
+     (indptr,indices,data,shape) = spams_wrap.lassoWeighted(X,D,W,L,lambda1,mode,pos,numThreads,verbose)
+     alpha = ssp.csc_matrix((data,indices,indptr),shape)
+@@ -643,19 +643,19 @@ def omp(X,D,L=None,eps= None,lambda1 = None,return_reg_path = False, numThreads
+     given_L = False
+     given_eps = False
+     given_lambda1 = False
+-    if L == None:
++    if L is None:
+         L = np.array([0],dtype=np.int32)
+     else:
+         given_L = True
+         if str(type(L)) != "<type 'numpy.ndarray'>":
+             L = np.array([L],dtype=np.int32)
+-    if eps == None:
++    if eps is None:
+         eps = np.array([0.],dtype=X.dtype)
+     else:
+         given_eps = True
+         if str(type(eps)) != "<type 'numpy.ndarray'>":
+             eps = np.array([eps],dtype=X.dtype)
+-    if lambda1 == None:
++    if lambda1 is None:
+         lambda1 = np.array([0.],dtype=X.dtype)
+     else:
+         given_lambda1 = True
+@@ -736,19 +736,19 @@ def ompMask(X,D,B,L=None,eps= None,lambda1 = None,return_reg_path = False, numTh
+     given_L = False
+     given_eps = False
+     given_lambda1 = False
+-    if L == None:
++    if L is None:
+         L = np.array([0],dtype=np.int32)
+     else:
+         given_L = True
+         if str(type(L)) != "<type 'numpy.ndarray'>":
+             L = np.array([L],dtype=np.int32)
+-    if eps == None:
++    if eps is None:
+         eps = np.array([0.],dtype=X.dtype)
+     else:
+         given_eps = True
+         if str(type(eps)) != "<type 'numpy.ndarray'>":
+             eps = np.array([eps],dtype=X.dtype)
+-    if lambda1 == None:
++    if lambda1 is None:
+         lambda1 = np.array([0.],dtype=X.dtype)
+     else:
+         given_lambda1 = True
+@@ -819,7 +819,7 @@ def  cd(X,D,A0,lambda1 = None,mode= spams_wrap.PENALTY,itermax=100,tol = 0.001,n
+ 
+     """
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("cd : lambda1 must be defined")
+     (indptr,indices,data,shape) = spams_wrap.cd(X,D,A0,lambda1,mode,itermax,tol,numThreads)
+     alpha = ssp.csc_matrix((data,indices,indptr),shape)
+@@ -879,7 +879,7 @@ def somp(X,D,list_groups,L = None,eps = 0.,numThreads = -1):
+ 
+     """
+ 
+-    if L == None:
++    if L is None:
+         raise ValueError("somp : L must be defined")
+     (indptr,indices,data,shape) = spams_wrap.somp(X,D,list_groups,L,eps,numThreads)
+     alpha = ssp.csc_matrix((data,indices,indptr),shape)
+@@ -936,7 +936,7 @@ def l1L2BCD(X,D,alpha0,list_groups,lambda1 = None, mode= spams_wrap.PENALTY, ite
+ 
+     """
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("l1L2BCD : lambda1 must be defined")
+     alpha = np.copy(alpha0)
+     spams_wrap.l1L2BCD(X,D,alpha,list_groups,lambda1,mode,itermax,tol,numThreads)
+@@ -1109,9 +1109,9 @@ def fistaFlat(
+ #
+ ##    params = __param_struct(paramlist,param)
+ #    W = np.empty((W0.shape[0],W0.shape[1]),dtype=W0.dtype,order="FORTRAN")
+-    if groups == None:
++    if groups is None:
+         groups = np.array([],dtype=np.int32,order="FORTRAN")
+-    if inner_weights == None:
++    if inner_weights is None:
+         inner_weights = np.array([0.],dtype=X.dtype)
+     W = np.zeros((W0.shape[0],W0.shape[1]),dtype=W0.dtype,order="FORTRAN")
+     optim_info = spams_wrap.fistaFlat(Y,X,W0,W,groups,numThreads ,max_it ,L0,fixed_step,gamma,lambda1,delta,lambda2,lambda3,a,b,c,tol,it0,max_iter_backtracking,compute_gram,lin_admm,admm,intercept,resetflow,regul,loss,verbose,pos,clever,log,ista,subgrad,logName,is_inner_weights,inner_weights,size_group,sqrt_step,transpose,linesearch_mode)
+@@ -1226,7 +1226,7 @@ def fistaTree(
+ 
+     if(len(tree) != 4):
+         raise ValueError("fistaTree : tree should be a list of 4 elements")
+-    if inner_weights == None:
++    if inner_weights is None:
+         inner_weights = np.array([0.],dtype=X.dtype)
+     eta_g = tree['eta_g']
+     groups = tree['groups']
+@@ -1348,9 +1348,9 @@ def fistaGraph(
+         raise ValueError("fistaGraph : graph should be a list of 3 elements")
+     eta_g = graph['eta_g']
+     groups = graph['groups']
+-    if groups == None:
++    if groups is None:
+         groups = np.array([],dtype=np.int32,order="FORTRAN")
+-    if inner_weights == None:
++    if inner_weights is None:
+         inner_weights = np.array([0.],dtype=X.dtype)
+     groups_var = graph['groups_var']
+     W = np.zeros((W0.shape[0],W0.shape[1]),dtype=W0.dtype,order="FORTRAN")
+@@ -1485,7 +1485,7 @@ def proximalFlat(U,return_val_loss = False,numThreads =-1,lambda1=1.0,lambda2=0.
+ #                 ('size_group',1),('transpose',False)]
+ #    params = __param_struct(paramlist,param)
+ 
+-    if groups == None:
++    if groups is None:
+         groups = np.array([],dtype=np.int32,order="FORTRAN")
+ 
+     eval = return_val_loss
+@@ -1780,19 +1780,19 @@ def __allTrainDL(X,return_model= None,model= None,in_memory= False,
+ #                 ('logName','')
+ #                 ]
+ #    params = __param_struct(paramlist,param)
+-    if D == None:
++    if D is None:
+         D = np.array([[],[]],dtype=X.dtype,order="FORTRAN")
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("trainDL : lambda1 must be defined")
+ 
+-    if tree == None and graph == None:
++    if tree is None and graph is None:
+         eta_g = np.array([],dtype=X.dtype,order="FORTRAN")
+         groups = ssp.csc_matrix(np.array([[False],[False]],dtype=np.bool,order="FORTRAN"))
+-    if tree != None:
++    if tree is not None:
+         if not ('eta_g' in tree and 'groups' in tree and 
+                 'own_variables' in tree and 'N_own_variables' in tree):
+             raise ValueError("structTrainDL : incorrect tree structure")
+-        if graph != None:
++        if graph is not None:
+             raise ValueError("structTrainDL : only one of tree or graph can be given")
+         eta_g = tree['eta_g']
+         groups = tree['groups']
+@@ -1802,7 +1802,7 @@ def __allTrainDL(X,return_model= None,model= None,in_memory= False,
+         own_variables = np.array([],dtype=np.int32,order="FORTRAN")
+         N_own_variables = np.array([],dtype=np.int32,order="FORTRAN")
+ 
+-    if graph != None:
++    if graph is not None:
+         if not ('eta_g' in graph and 'groups' in graph and 'groups_var' in graph):
+             raise ValueError("structTrainDL : incorrect graph structure")
+         eta_g = graph['eta_g']
+@@ -1811,7 +1811,7 @@ def __allTrainDL(X,return_model= None,model= None,in_memory= False,
+     else:
+         groups_var = ssp.csc_matrix(np.array([[False],[False]],dtype=np.bool,order="FORTRAN"))
+ 
+-    if model == None:
++    if model is None:
+         m_A = np.array([[],[]],dtype=X.dtype,order="FORTRAN")
+         m_B = np.array([[],[]],dtype=X.dtype,order="FORTRAN")
+         m_iter = 0
+@@ -1970,7 +1970,7 @@ def trainDL(
+     """
+ 
+ 
+-    if iter_updateD == None:
++    if iter_updateD is None:
+         if batch:
+             iter_updateD = 5
+         else:
+@@ -2107,12 +2107,12 @@ def structTrainDL(
+     """
+ 
+ 
+-    if iter_updateD == None:
++    if iter_updateD is None:
+         if batch:
+             iter_updateD = 5
+         else:
+             iter_updateD = 1
+-    if regul == None:
++    if regul is None:
+         regul = "none"
+     return __allTrainDL(X,return_model,model,False,D,graph,tree,numThreads,tol,fixed_step,ista,batchsize,K,lambda1,lambda2,lambda3,iter,t0,spams_wrap.FISTAMODE,regul,posAlpha,posD,expand,modeD,whiten,clean,verbose,gamma1,gamma2,rho,iter_updateD,stochastic_deprecated,modeParam,batch,log_deprecated,logName)
+ 
+@@ -2385,7 +2385,7 @@ def nnsc(X,return_lasso= False,model= None,lambda1= None,
+ 
+     """
+ 
+-    if lambda1 == None:
++    if lambda1 is None:
+         raise ValueError("nnsc : lambda1 must be defined")
+     U = trainDL(X,model = model,numThreads = numThreads,batchsize = batchsize,
+                 K = K,iter = iter, t0 = t0, clean = clean, rho = rho,verbose=False, 
+@@ -2417,7 +2417,7 @@ def archetypalAnalysis(X, p = 10, Z0 = None, returnAB = False, robust=False, eps
+ 
+     """
+ 
+-    if Z0 == None:
++    if Z0 is None:
+         (Z,(indptr,indices,data,shape),(indptr2,indices2,data2,shape2)) = spams_wrap.archetypalAnalysis(X, p, robust, epsilon, computeXtX, stepsFISTA, stepsAS, randominit,numThreads)
+     else:
+         (Z,(indptr,indices,data,shape),(indptr2,indices2,data2,shape2)) = spams_wrap.archetypalAnalysisInit(X, Z0, robust, epsilon, computeXtX, stepsFISTA, stepsAS,numThreads)
 @@ -2467,6 +2467,7 @@ def displayPatches(D):
      if int(sizeEdge) != sizeEdge:
          V = 3
