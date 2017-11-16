@@ -44,7 +44,7 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas 0.2.19|0.2.19.*
-    - numpy x.x
+    - numpy 1.9.*
     - scipy
     # For tests.
     - pillow
@@ -54,7 +54,7 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas 0.2.19|0.2.19.*
-    - numpy x.x
+    - numpy >=1.9
     - scipy
 
 test:
