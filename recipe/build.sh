@@ -10,5 +10,4 @@ fi
 
 
 rm -r "${PREFIX}/doc"
-rm -r "${PREFIX}/extdata"
 rm -r "${PREFIX}/test"
