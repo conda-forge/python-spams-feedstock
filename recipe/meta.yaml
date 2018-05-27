@@ -13,6 +13,10 @@ source:
   url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
   sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
 
+  patches:
+    # Handle type mismatch issues in array creation.
+    - spams.py.patch
+
 build:
   skip: true  # [win]
   number: 200
