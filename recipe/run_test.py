@@ -5,8 +5,9 @@ import shutil
 
 
 # move lena.png and boat.png out
-shutil.move('extdata/lena.png', '.')
-shutil.move('extdata/boat.png', '.')
+for file in ('extdata/lena.png', 'extdata/boat.png'):
+    if os.path.exists(file):
+        shutil.move(file, '.')
 
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["OMP_NUM_THREADS"] = os.environ["CPU_COUNT"]
