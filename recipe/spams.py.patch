@@ -1,0 +1,13 @@
+diff --git a/recipe/spams.py b/recipe/spams.py
+index 24fb2fb..8c2d23f 100644
+--- a/recipe/spams.py
++++ b/recipe/spams.py
+@@ -2470,7 +2470,7 @@ def displayPatches(D):
+     if int(sizeEdge) != sizeEdge:
+         V = 3
+         sizeEdge=np.sqrt(n/V)
+-        sizeEdge = int(sizeEdge)
++    sizeEdge = int(sizeEdge)
+ 
+ 
+ #    for ii in xrange(0,D.shape[1]):
