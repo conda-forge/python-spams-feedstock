@@ -14,7 +14,7 @@ source:
   sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
 
   patches:
-    # Handle type mismatch issues in array creation.
+    # array creation requires integers for shape specification.
     - spams.py.patch
 
 build:
@@ -28,18 +28,18 @@ requirements:
   build:
     - gcc
     - python
-    - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy 1.13.*
+    - blas {{ variant }}
+    - openblas
+    - numpy 1.9.*
     - scipy
     # For tests.
     - pillow
   run:
     - libgcc
     - python
-    - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy >=1.13
+    - blas {{ variant }}
+    - openblas
+    - {{ pin_compatible('numpy') }}
     - scipy
     - six
 
@@ -47,7 +47,7 @@ test:
   source_files:
     # Test data
     - extdata/boat.png
-    - extdata/lena.png           # [linux]
+    - extdata/lena.png   # [linux]
     # Test suite
     - test_decomp.py     # [linux]
     - test_dictLearn.py
