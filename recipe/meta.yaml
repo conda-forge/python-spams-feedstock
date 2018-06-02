@@ -28,7 +28,7 @@ requirements:
   build:
     - gcc
     - python
-    - blas {{ variant }}
+    - blas 1.1 {{ variant }}
     - openblas
     - numpy 1.9.*
     - scipy
@@ -37,7 +37,7 @@ requirements:
   run:
     - libgcc
     - python
-    - blas {{ variant }}
+    - blas 1.1 {{ variant }}
     - openblas
     - {{ pin_compatible('numpy') }}
     - scipy
