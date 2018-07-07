@@ -1,0 +1,16 @@
+c_compiler:
+- toolchain_c
+cxx_compiler:
+- toolchain_cxx
+numpy:
+- '1.9'
+openblas:
+- 0.2.20
+pin_run_as_build:
+  openblas:
+    max_pin: x.x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- '3.5'
