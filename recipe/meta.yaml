@@ -33,28 +33,29 @@ source:
 
 build:
   skip: true  # [win]
-  number: 203
+  number: 204
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - gcc
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy 1.9.*
+    - openblas
+    - numpy
     - scipy
     # For tests.
     - pillow
-    
+
   run:
-    - libgcc
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy >=1.9
+    - openblas
+    - {{ pin_compatible('numpy') }}
     - scipy
 
 test:
