@@ -31,6 +31,7 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas
+    - openmp 4.0.*                   # [osx]
     - numpy
     - scipy
     # For tests.
@@ -39,6 +40,7 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas
+    - openmp 4.0.*                   # [osx]
     - {{ pin_compatible('numpy') }}
     - scipy
     - six
