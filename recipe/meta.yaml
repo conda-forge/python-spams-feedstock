@@ -26,7 +26,8 @@ build:
 
 requirements:
   build:
-    - gcc
+    - {{ compiler("cxx") }}
+  host:
     - python
     - blas 1.1 {{ variant }}
     - openblas
@@ -35,7 +36,6 @@ requirements:
     # For tests.
     - pillow
   run:
-    - libgcc
     - python
     - blas 1.1 {{ variant }}
     - openblas
