@@ -30,7 +30,7 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas
-    - numpy 1.9.*
+    - numpy
     - scipy
     # For tests.
     - pillow
