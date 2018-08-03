@@ -1,7 +1,6 @@
-{% set version = "2.6" %}
-{% set date = "2017-03-28" %}
-{% set file_num = "36643" %}      # [py2k]
-{% set file_num = "36644" %}      # [py3k]
+{% set version = "2.6.1" %}
+{% set date = "2017-12-08" %}
+{% set file_num = "37237" %}
 
 {% set variant = "openblas" %}
 
@@ -10,58 +9,47 @@ package:
   version: {{ version }}
 
 source:
-  fn: spams-python2-{{ version }}.tar.gz                                                                                         # [py2k]
-  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz   # [py2k]
-  sha256: b0372195c5c6e42251caad8751907873392ee0f87dc00767d45cd1d19a8e5e21                                                       # [py2k]
-
-  fn: spams-python3-{{ version }}.tar.gz                                                                                         # [py3k]
-  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python3-v{{ version }}-svn{{ date }}.tar.gz  # [py3k]
-  sha256: bd86be7bbe25dffffd5cc969ba5ec71e52f0a45102e31e40ebedf66616788734                                                       # [py3k]
+  fn: spams-python-{{ version }}.tar.gz
+  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
+  sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
 
   patches:
-    # Fix how BLAS is detected. Mailed to developer.
-    - python2_setup.py.patch      # [py2k]
-    - python3_setup.py.patch      # [py3k]
-    # Update bindings for NumPy 1.10.x from 1.9.x.
-    - spams_wrap.cpp.patch
-    - spams_wrap-windows.cpp.patch
-    # Handle type mismatch issues in array creation.
-    - python2_spams.py.patch      # [py2k]
-    - python3_spams.py.patch      # [py3k]
-    - python2_test_prox.py.patch  # [py2k]
-    - python3_test_prox.py.patch  # [py3k]
+    # array creation requires integers for shape specification.
+    - spams.py.patch
 
 build:
   skip: true  # [win]
-  number: 203
+  number: 200
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - gcc
+    - {{ compiler("cxx") }}
+  host:
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy 1.9.*
+    - openblas
+    - openmp 4.0.*                   # [osx]
+    - numpy
     - scipy
     # For tests.
     - pillow
-    
   run:
-    - libgcc
     - python
     - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
-    - numpy >=1.9
+    - openblas
+    - openmp 4.0.*                   # [osx]
+    - {{ pin_compatible('numpy') }}
     - scipy
+    - six
 
 test:
   source_files:
     # Test data
-    - boat.png
-    - lena.png           # [linux]
+    - extdata/boat.png
+    - extdata/lena.png   # [linux]
     # Test suite
     - test_decomp.py     # [linux]
     - test_dictLearn.py
@@ -82,3 +70,4 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
+    - zym1010
