@@ -14,8 +14,7 @@ Summary: An optimization toolbox for solving various sparse estimation problems.
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/python-spams-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/python-spams-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/python-spams-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/python-spams-feedstock)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/python-spams-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/python-spams-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
