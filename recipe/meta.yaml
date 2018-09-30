@@ -1,4 +1,4 @@
-{% set version = "2.6.1" %}
+{% set version = "3.1.2" %}
 {% set date = "2017-12-08" %}
 {% set file_num = "37237" %}
 
@@ -19,7 +19,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 200
+  number: 0
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
