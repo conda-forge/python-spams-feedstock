@@ -49,12 +49,12 @@ test:
   source_files:
     # Test data
     - extdata/boat.png
-    - extdata/lena.png   # [linux]
+    - extdata/lena.png
     # Test suite
-    - test_decomp.py     # [linux]
+    - test_decomp.py
     - test_dictLearn.py
     - test_linalg.py
-    - test_prox.py       # [linux]
+    - test_prox.py
     - test_spams.py
     - test_utils.py
   requires:
