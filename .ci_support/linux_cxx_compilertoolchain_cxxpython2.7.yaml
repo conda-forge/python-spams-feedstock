@@ -1,19 +1,17 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+build_number_decrement:
+- '1000'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
+- toolchain_cxx
+docker_image:
+- condaforge/linux-anvil
 numpy:
 - '1.9'
 openblas:
-- 0.2.20
+- 0.3.3
 pin_run_as_build:
   openblas:
     max_pin: x.x.x
@@ -21,4 +19,10 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.5'
+- '2.7'
+zip_keys:
+- - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
