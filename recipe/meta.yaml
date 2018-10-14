@@ -19,7 +19,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 200
+  number: 1200
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
