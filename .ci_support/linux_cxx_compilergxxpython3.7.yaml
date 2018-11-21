@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil-comp7
 numpy:
 - '1.9'
 openblas:
