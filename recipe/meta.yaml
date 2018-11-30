@@ -31,7 +31,11 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas
-    - llvm-openmp 4.0.*              # [osx]
+{% if compiler("cxx").startswith("toolchain_cxx") %}
+    - openmp 4.0.*                   # [osx]
+{% else %}
+    - llvm-openmp                    # [osx]
+{% endif %}
     - numpy
     - scipy
     # For tests.
@@ -40,7 +44,11 @@ requirements:
     - python
     - blas 1.1 {{ variant }}
     - openblas
-    - llvm-openmp 4.0.*              # [osx]
+{% if compiler("cxx").startswith("toolchain_cxx") %}
+    - openmp 4.0.*                   # [osx]
+{% else %}
+    - llvm-openmp                    # [osx]
+{% endif %}
     - {{ pin_compatible('numpy') }}
     - scipy
     - six
