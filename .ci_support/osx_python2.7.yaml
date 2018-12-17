@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- toolchain_cxx
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
