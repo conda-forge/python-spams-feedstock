@@ -32,13 +32,13 @@ requirements:
     - pip
     - blas 1.1 {{ variant }}
     - openblas
-    - openmp 4.0.*                   # [osx]
+    - llvm-openmp                    # [osx]
     - numpy
   run:
     - python
     - blas 1.1 {{ variant }}
     - openblas
-    - openmp 4.0.*                   # [osx]
+    - llvm-openmp                    # [osx]
     - {{ pin_compatible('numpy') }}
     - scipy
     - six
