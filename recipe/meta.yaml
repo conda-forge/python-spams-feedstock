@@ -65,6 +65,7 @@ test:
 about:
   home: http://spams-devel.gforge.inria.fr/
   license: GPL 3
+  license_family: GPL
   summary: An optimization toolbox for solving various sparse estimation problems.
 
 extra:
