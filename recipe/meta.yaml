@@ -27,6 +27,7 @@ build:
 requirements:
   build:
     - {{ compiler("cxx") }}
+    - llvm-openmp                    # [osx]
   host:
     - python
     - pip
