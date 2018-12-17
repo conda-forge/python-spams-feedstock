@@ -33,9 +33,6 @@ requirements:
     - openblas
     - openmp 4.0.*                   # [osx]
     - numpy
-    - scipy
-    # For tests.
-    - pillow
   run:
     - python
     - blas 1.1 {{ variant }}
