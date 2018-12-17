@@ -14,6 +14,8 @@ source:
   sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
 
   patches:
+    # patch setup.py to link to LLVM's OpenMP library instead of GCC's.
+    - llvm_openmp_setup.py.patch  # [osx]
     # array creation requires integers for shape specification.
     - spams.py.patch
 
