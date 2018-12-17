@@ -29,6 +29,7 @@ requirements:
     - {{ compiler("cxx") }}
   host:
     - python
+    - pip
     - blas 1.1 {{ variant }}
     - openblas
     - openmp 4.0.*                   # [osx]
