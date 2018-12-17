@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 if [ "$(uname)" == 'Darwin' ]
 then
     export LDFLAGS="${LDFLAGS} -Wl,-rpath,$PREFIX/lib"
