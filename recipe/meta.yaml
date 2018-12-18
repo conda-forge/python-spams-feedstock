@@ -1,6 +1,6 @@
 {% set version = "2.6.1" %}
-{% set date = "2017-12-08" %}
-{% set file_num = "37237" %}
+{% set date = "2018-08-06" %}
+{% set file_num = "37659" %}
 
 {% set variant = "openblas" %}
 
