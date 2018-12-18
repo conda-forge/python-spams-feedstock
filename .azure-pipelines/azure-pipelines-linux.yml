@@ -1,0 +1,28 @@
+jobs:
+- job: linux_64
+  pool:
+    vmImage: ubuntu-16.04
+  timeoutInMinutes: 240
+  strategy:
+    maxParallel: 8
+    matrix:
+      linux_cxx_compilergxxpython2.7:
+        CONFIG: linux_cxx_compilergxxpython2.7
+      linux_cxx_compilergxxpython3.6:
+        CONFIG: linux_cxx_compilergxxpython3.6
+      linux_cxx_compilergxxpython3.7:
+        CONFIG: linux_cxx_compilergxxpython3.7
+      linux_cxx_compilertoolchain_cxxpython2.7:
+        CONFIG: linux_cxx_compilertoolchain_cxxpython2.7
+      linux_cxx_compilertoolchain_cxxpython3.6:
+        CONFIG: linux_cxx_compilertoolchain_cxxpython3.6
+      linux_cxx_compilertoolchain_cxxpython3.7:
+        CONFIG: linux_cxx_compilertoolchain_cxxpython3.7
+  steps:
+  - script: |
+      sudo pip install --upgrade pip
+      sudo pip install setuptools shyaml
+    displayName: Install dependencies
+
+  - script: .azure-pipelines/run_docker_build.sh
+    displayName: Run docker build
