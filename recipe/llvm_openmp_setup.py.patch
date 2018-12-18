@@ -1,0 +1,13 @@
+diff --git setup.py setup.py
+index c0227b6..8d3a6e7 100644
+--- setup.py
++++ setup.py
+@@ -28,7 +28,7 @@ for _ in numpy.__config__.lapack_opt_info.get("extra_link_args", []):
+     if _ not in link_flags:
+         link_flags.append(_)
+ 
+-libs = ['stdc++', 'blas', 'lapack', 'gomp']
++libs = ['stdc++', 'blas', 'lapack', 'omp']
+ libdirs = numpy.distutils.system_info.blas_info().get_lib_dirs()
+ 
+ ##path = os.environ['PATH']; print "XX OS %s, path %s" %(osname,path)

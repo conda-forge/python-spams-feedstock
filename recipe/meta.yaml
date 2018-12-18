@@ -14,12 +14,14 @@ source:
   sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
 
   patches:
+    # patch setup.py to link to LLVM's OpenMP library instead of GCC's.
+    - llvm_openmp_setup.py.patch  # [osx]
     # array creation requires integers for shape specification.
     - spams.py.patch
 
 build:
   skip: true  # [win]
-  number: 200
+  number: 201
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
@@ -27,20 +29,19 @@ build:
 requirements:
   build:
     - {{ compiler("cxx") }}
+    - llvm-openmp                    # [osx]
   host:
     - python
+    - pip
     - blas 1.1 {{ variant }}
     - openblas
-    - openmp 4.0.*                   # [osx]
+    - llvm-openmp                    # [osx]
     - numpy
-    - scipy
-    # For tests.
-    - pillow
   run:
     - python
     - blas 1.1 {{ variant }}
     - openblas
-    - openmp 4.0.*                   # [osx]
+    - llvm-openmp                    # [osx]
     - {{ pin_compatible('numpy') }}
     - scipy
     - six
@@ -65,6 +66,8 @@ test:
 about:
   home: http://spams-devel.gforge.inria.fr/
   license: GPL 3
+  license_family: GPL
+  license_file: LICENSE.txt
   summary: An optimization toolbox for solving various sparse estimation problems.
 
 extra:

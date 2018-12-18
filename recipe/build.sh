@@ -1,13 +1,6 @@
-if [ "$(uname)" == 'Darwin' ]
-then
-    export LDFLAGS="${LDFLAGS} -Wl,-rpath,$PREFIX/lib"
-else
-    export LDFLAGS="${LDFLAGS} -Wl,-rpath=$PREFIX/lib"
-fi
+#!/usr/bin/env bash
 
-
-"${PYTHON}" setup.py install
-
+"${PYTHON}" -m pip install . --no-deps -vv
 
 rm -r "${PREFIX}/doc"
 rm -r "${PREFIX}/test"
