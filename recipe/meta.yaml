@@ -21,7 +21,7 @@ source:
 
 build:
   skip: true  # [win or (osx and cxx_compiler == "toolchain_cxx")]
-  number: 1202
+  number: 1203
   detect_binary_files_with_prefix: true
   features:
     - blas_{{ variant }}
