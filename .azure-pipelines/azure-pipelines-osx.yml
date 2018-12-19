@@ -10,6 +10,8 @@ jobs:
         CONFIG: osx_python2.7
       osx_python3.6:
         CONFIG: osx_python3.6
+      osx_python3.7:
+        CONFIG: osx_python3.7
 
   steps:
   # TODO: Fast finish on azure pipelines?

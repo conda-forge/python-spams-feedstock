@@ -1,5 +1,3 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 build_number_decrement:
 - '0'
 channel_sources:
@@ -7,11 +5,9 @@ channel_sources:
 channel_targets:
 - conda-forge gcc7
 cxx_compiler:
-- clangxx
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
+- gxx
+docker_image:
+- condaforge/linux-anvil-comp7
 numpy:
 - '1.9'
 openblas:
@@ -23,9 +19,10 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.6'
+- '2.7'
 zip_keys:
 - - cxx_compiler
   - channel_sources
   - channel_targets
+  - docker_image
   - build_number_decrement
