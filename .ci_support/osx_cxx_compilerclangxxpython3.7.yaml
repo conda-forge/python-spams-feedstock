@@ -1,9 +1,11 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
+build_number_decrement:
+- '0'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
+- conda-forge gcc7
 cxx_compiler:
 - clangxx
 macos_machine:
@@ -21,4 +23,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.6'
+- '3.7'
+zip_keys:
+- - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - build_number_decrement
