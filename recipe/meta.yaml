@@ -30,7 +30,7 @@ requirements:
     - llvm-openmp                    # [osx]
   host:
     - libblas
-    - libcblas
+    - liblapack
     - python
     - pip
     - llvm-openmp                    # [osx]
