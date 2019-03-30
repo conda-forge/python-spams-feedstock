@@ -10,8 +10,8 @@ docker_image:
 - condaforge/linux-anvil-comp7
 libblas:
 - 3.8 *netlib
-libcblas:
-- 3.8 *netlib
+liblapack:
+- 3.8.0 *netlib
 numpy:
 - '1.9'
 pin_run_as_build:
