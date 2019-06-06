@@ -17,7 +17,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 numpy:
-- '1.9'
+- '1.14'
 pin_run_as_build:
   python:
     min_pin: x.x
