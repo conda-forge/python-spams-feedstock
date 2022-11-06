@@ -1,16 +1,17 @@
 # This file was generated automatically from conda-smithy. To update this configuration,
 # update the conda-forge.yml and/or the recipe/meta.yaml.
-# -*- mode: yaml -*-
+# -*- mode: jinja-yaml -*-
 
 version: 2
 
 jobs:
-  build_osx_python2.7:
+  build_osx_64_numpy1.20python3.8.____cpython:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_python2.7"
+      - CONFIG: "osx_64_numpy1.20python3.8.____cpython"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -22,13 +23,20 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
-  build_osx_python3.6:
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
+            ./.scripts/run_osx_build.sh
+  build_osx_64_numpy1.20python3.9.____cpython:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_python3.6"
+      - CONFIG: "osx_64_numpy1.20python3.9.____cpython"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -40,13 +48,20 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
-  build_osx_python3.7:
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
+            ./.scripts/run_osx_build.sh
+  build_osx_64_numpy1.21python3.10.____cpython:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_python3.7"
+      - CONFIG: "osx_64_numpy1.21python3.10.____cpython"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -58,13 +73,20 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
-  build_osx_python3.8:
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
+            ./.scripts/run_osx_build.sh
+  build_osx_64_numpy1.23python3.11.____cpython:
     working_directory: ~/test
     macos:
-      xcode: "9.0"
+      xcode: "13.0.0"
     environment:
-      - CONFIG: "osx_python3.8"
+      - CONFIG: "osx_64_numpy1.23python3.11.____cpython"
+      - UPLOAD_PACKAGES: "True"
     steps:
       - checkout
       - run:
@@ -76,13 +98,19 @@ jobs:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: |
             export CI=circle
-            ./.circleci/run_osx_build.sh
+            export FEEDSTOCK_NAME=$(basename ${CIRCLE_PROJECT_REPONAME})
+            if [[ "${CIRCLE_PR_NUMBER:-}" == "" ]]; then
+              export IS_PR_BUILD="False"
+            else
+              export IS_PR_BUILD="True"
+            fi
+            ./.scripts/run_osx_build.sh
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_osx_python2.7
-      - build_osx_python3.6
-      - build_osx_python3.7
-      - build_osx_python3.8
+      - build_osx_64_numpy1.20python3.8.____cpython
+      - build_osx_64_numpy1.20python3.9.____cpython
+      - build_osx_64_numpy1.21python3.10.____cpython
+      - build_osx_64_numpy1.23python3.11.____cpython
