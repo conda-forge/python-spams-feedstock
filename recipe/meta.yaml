@@ -1,6 +1,5 @@
-{% set version = "2.6.1" %}
-{% set date = "2017-12-08" %}
-{% set file_num = "37237" %}
+{% set version = "2.6.5.4" %}
+
 
 
 package:
@@ -9,8 +8,8 @@ package:
 
 source:
   fn: spams-python-{{ version }}.tar.gz
-  url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
-  sha256: 5d4b5340237823998c63f2534c5830d770bf00a5f3cc38e7de3ecb136c126688
+  url: https://github.com/getspams/spams-python/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 67efbd1a23a2afb087df5b24267e9a5dbfa9ff44e7a01de5900aec2d54f4a97c
 
   patches:
     # patch setup.py to link to LLVM's OpenMP library instead of GCC's.
