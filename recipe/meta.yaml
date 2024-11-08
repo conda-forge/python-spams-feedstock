@@ -10,7 +10,7 @@ package:
 source:
   fn: spams-python-{{ version }}.tar.gz
   url: http://spams-devel.gforge.inria.fr/hitcounter2.php?file={{ file_num }}/spams-python-v{{ version }}-svn{{ date }}.tar.gz
-  sha256: 3012529c0461bd777228dce53c880f2a5fa2aaf22b5d673a1f22045a63f4d8bc
+  sha256: 5d4b5340237823998c63f2534c5830d770bf00a5f3cc38e7de3ecb136c126688
 
   patches:
     # patch setup.py to link to LLVM's OpenMP library instead of GCC's.
