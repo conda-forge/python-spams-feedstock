@@ -1,4 +1,3 @@
-compiler_stack: comp7
 conda_forge_output_validation: true
 build_platform:
   osx_arm64: osx_64
