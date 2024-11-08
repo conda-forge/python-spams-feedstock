@@ -8,27 +8,28 @@ package:
 
 source:
   fn: spams-python-{{ version }}.tar.gz
-  url: https://github.com/getspams/spams-python/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/getspams/spams-python/archive/refs/tags/{{ version }}.tar.gz
   sha256: 67efbd1a23a2afb087df5b24267e9a5dbfa9ff44e7a01de5900aec2d54f4a97c
 
-  patches:
+  #patches:
     # patch setup.py to link to LLVM's OpenMP library instead of GCC's.
-    - llvm_openmp_setup.py.patch  # [osx]
+    #- llvm_openmp_setup.py.patch  # [osx]
     # array creation requires integers for shape specification.
-    - spams.py.patch
+    #- spams.py.patch
 
 build:
   skip: true  # [win or (osx and cxx_compiler == "toolchain_cxx")]
   number: 1204
   detect_binary_files_with_prefix: true
-  features:
+  number: 0
 
 requirements:
   build:
     - {{ compiler("cxx") }}
     - llvm-openmp      
     - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]              # [osx]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - {{ stdlib("c") }}
   host:
     - libblas
     - liblapack
