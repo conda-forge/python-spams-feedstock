@@ -1,7 +1,7 @@
 compiler_stack: comp7
-max_py_ver: "37"
-max_r_ver: "35"
 conda_forge_output_validation: true
+build_platform:
+  osx_arm64: osx_64
 github:
   branch_name: main
   tooling_branch_name: main
